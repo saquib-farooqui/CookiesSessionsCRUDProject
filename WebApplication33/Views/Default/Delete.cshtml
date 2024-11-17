@@ -1,0 +1,32 @@
+﻿@model WebApplication33.Models.Books
+@{
+    ViewBag.Title = "Edit";
+}
+
+<tbody>
+
+
+
+    @using (Html.BeginForm("Delete", "Default", FormMethod.Post))
+    {
+        <tr>
+            <td>
+                @Html.TextBoxFor(r => r.BookName)
+
+
+            </td>
+
+            <td>
+                @Html.TextBoxFor(r => r.Author)
+
+            </td>
+            <td>
+                @Html.TextBoxFor(r => r.PublishingYear)
+
+            </td>
+            <td><input type="Submit" value="Delete" /></td>
+
+        </tr>
+
+    }
+    <tr>

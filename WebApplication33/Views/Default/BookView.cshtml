@@ -1,0 +1,61 @@
+﻿@model WebApplication33.Models.BookViewModel
+@{
+    ViewBag.Title = "BookView";
+}
+
+<h2>BookView</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Year</th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach(var i in Model.listofbooks)
+            {
+                <tr>
+                    <td>@i.BookName</td>
+                    <td>@i.Author</td>
+                    <td>@i.PublishingYear</td>
+                    <td><a href="@Url.Action("Edit", "Default", new { id = i.Id })">Edit</a></td>
+                    <td><a href="@Url.Action("Delete", "Default", new { id = i.Id })">Delete</a></td>
+                </tr>
+            }
+
+        @using (Html.BeginForm("BookView","Default", FormMethod.Post))
+            {
+                <tr>
+                    <td>@Html.TextBoxFor(r=>r.addBook.BookName)
+                        @Html.ValidationMessageFor(r=>r.addBook.BookName)
+                        
+                    </td>
+
+                    <td>
+                        @Html.TextBoxFor(r => r.addBook.Author)
+                        @Html.ValidationMessageFor(r => r.addBook.Author)
+                                    </td>
+                    <td>
+                        @Html.TextBoxFor(r => r.addBook.PublishingYear)
+                        @Html.ValidationMessageFor(r => r.addBook.PublishingYear)
+                                    </td>
+                    <td><input type="Submit" value="Create" /></td>
+         
+                </tr>
+      
+            }
+    <tr>
+        
+        <td>@ViewBag.Message</td>
+    </tr>
+    </tbody>
+
+
+
+
+
+
+
+</table>
